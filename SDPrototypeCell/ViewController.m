@@ -25,7 +25,8 @@
     [super viewDidLoad];
     
     _tweetsForDisplay = [[NSMutableArray alloc] init];
-    
+    [self getdata];
+
     SDTweet *dummyDataTweet = [[SDTweet alloc]init];                    //non network data to verify that cell display working
     [dummyDataTweet setUserName:@"shay deacy"];
     [dummyDataTweet setScreenName:@"shay"];
@@ -35,7 +36,6 @@
 
     [_tweetsForDisplay addObject:dummyDataTweet];
     
-    [self getdata];
     
 }
 
@@ -43,6 +43,7 @@
 //get json data from web, and create a SDTweet object with the parts of the data required
 
 -(void)getdata{
+    NSLog(@"getting data....");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     
@@ -74,6 +75,7 @@
              [aTweet setTweetText:tweetText];
              
              [_tweetsForDisplay addObject:aTweet];
+             NSLog(@"Adding....:%@",aTweet);
              
          }
          
@@ -84,6 +86,10 @@
          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:  nil];
          [alertView show];
      }];
+    
+    for (id sdTweet in _tweetsForDisplay) {
+        NSLog(@"tweet for display : %@", sdTweet);
+    }
     
     
 }
@@ -105,6 +111,7 @@
     cell.userNameLabel.text = [sdTweet screenName];
     cell.tweetTextField.text = [sdTweet tweetText];
     cell.tweetImageView.image = [UIImage imageNamed:[sdTweet tweetPic]];
+    
     return cell;
 }
 
