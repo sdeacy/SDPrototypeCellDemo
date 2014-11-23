@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+
 @property NSArray *tweets;
-
-
+@property NSArray *tweetsArray;
+@property NSMutableArray *tweetsForDisplay;
 
 - (IBAction)leftNavButton:(id)sender;
 - (IBAction)rightNavButton:(id)sender;
