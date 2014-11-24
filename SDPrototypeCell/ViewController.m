@@ -36,7 +36,6 @@
 
     [_tweetsForDisplay addObject:dummyDataTweet];
     
-    
 }
 
 
@@ -107,10 +106,10 @@
     ShayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShayTableViewCellIdentifier"];
     SDTweet *sdTweet = _tweetsForDisplay[indexPath.row];
     NSLog(@"in cell for row , sdTweet: %@",sdTweet);
-    cell.realNameLabel.text = [sdTweet userName];
-    cell.userNameLabel.text = [sdTweet screenName];
-    cell.tweetTextField.text = [sdTweet tweetText];
-    cell.tweetImageView.image = [UIImage imageNamed:[sdTweet tweetPic]];
+    cell.realNameLabel.text     = [sdTweet userName];
+    cell.userNameLabel.text     = [sdTweet screenName];
+    cell.tweetTextField.text    = [sdTweet tweetText];
+    cell.tweetImageView.image   = [UIImage imageNamed:[sdTweet tweetPic]];
     
     return cell;
 }
